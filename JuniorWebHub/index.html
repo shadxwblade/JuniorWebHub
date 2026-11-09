@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Junior Web Hub</title>
+    </head>
+    <body>
+        <header>
+            <div class="header">
+                <h1 class="name">Junior Web Hub</h1>
+                <nav>
+                    <a href="#home" id="homeLink">Главная</a>
+                    <a href="#catalog" id="catalogLink">Каталог</a>
+                    <a href="#survey" id="surveyLink">Опрос</a>
+                    <a href="#about" id="aboutLink">О проекте</a>
+                </nav>
+                <div class="right">
+                    <input type="text" id="searchInput" placeholder="Введите для поиска">
+                    <ul id="resultList"></ul>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="homeSection">
+                <div id="homeContent"></div>
+            </section>
+            <section id="surveySection" class="hidden">
+                <div id="question"></div>
+            </section>
+            <section id="aboutSection" class="hidden">
+                <div id="info"></div>
+            </section>
+            <section id="catalogSection" class="hidden">
+                <div id="cards"></div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer_div">
+                <p class="footer_name">Автор: ReSP</p>
+                <a href="https://github.com/shadxwblade" class="footer_name">Github</a>
+            </div>
+        </footer>
+        <script src="js/places.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
