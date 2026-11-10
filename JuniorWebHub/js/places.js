@@ -58,7 +58,7 @@ const about = [
 
 const quests = [
     {
-        title: "мяу?",
+        title: "?",
         image: "images/i.jpg"
     }
 ];
