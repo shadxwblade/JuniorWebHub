@@ -44,19 +44,49 @@ searchInput.addEventListener('input', (e) => {
 });
 
 
-function renderQuestion (array) {
-    quest.innerHTML = '';
+function renderQuestion() {
+    const cats = [];
+    places.forEach(p => {
+        if (!cats.includes(p.category)) cats.push(p.category);
+    });
 
-    array.forEach(item => {
-        quest.innerHTML += `
-            <div class="quest">
-                <h1>${item.title}</h1>
-                <img src="${item.image}" alt="${item.title}">
-            </div>
-        `;
+    const votes = {};
+    cats.forEach(c => votes[c] = 0);
+
+    quest.innerHTML = `
+        <h2>Мини-опрос</h2>
+        <form id="pollForm">
+            <p>Какую категорию вы любите больше всего?</p>
+            ${cats.map(c => `<label><input type="radio" name="poll" value="${c}"> ${c}</label><br>`).join('')}
+            <button type="submit">Голосовать</button>
+        </form>
+        <div id="pollResult"></div>
+    `;
+
+    document.getElementById('pollForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const chosen = document.querySelector('input[name="poll"]:checked');
+        const result = document.getElementById('pollResult');
+
+        if (!chosen) {
+            result.innerHTML = '<p>Выберите вариант</p>';
+            return;
+        }
+
+        votes[chosen.value]++;
+
+        let total = 0;
+        for (const key in votes) total += votes[key];
+
+        result.innerHTML = '<h3>Результаты</h3>';
+        for (const key in votes) {
+            const percent = Math.round(votes[key] / total * 100);
+            result.innerHTML += `<p>${key}: ${votes[key]} (${percent}%)</p>`;
+        }
     });
 }
-renderQuestion(quests);
+renderQuestion();
 
 function renderCards(array) {
     cards.innerHTML = '';
